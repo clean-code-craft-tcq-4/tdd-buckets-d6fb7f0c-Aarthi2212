@@ -66,6 +66,10 @@ class BitsToAmpsTest(unittest.TestCase):
     for test in test_data.conversion_data:
       self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).convert(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))   
   
+  def test_absolute_conversion(self):
+    for test in test_data.absolute_conversion_data:
+      self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).get_absolute_readings(test.get(test_data.INPUT).get(test_data.AMPERE_READINGS)), test.get(test_data.OUTPUT))   
+  
   def test_convert_display_ampere_ranges(self):
     for test in test_data.conversion_readings_data:
       with patch(STD_OUT, new = StringIO()) as fake_out:
