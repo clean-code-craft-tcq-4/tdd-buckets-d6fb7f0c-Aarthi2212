@@ -1,6 +1,8 @@
 import constants as const
 INPUT = "INPUT"
 OUTPUT = "OUTPUT"
+BIT_READINGS = "BIT_READINGS"
+NO_OF_BITS = "NO_OF_BITS"
 INPUT_DATA_1 = [200, 199, 100, 101, 102, 103, 104, 78, 79, 80, 105, 45]
 INPUT_DATA_2 = [1, 4, 4, 10, 5, 11, 12, 13, 14]
 OUTPUT_MAP_1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
@@ -51,7 +53,7 @@ get_ranges_data = [
     OUTPUT:([(2, 2)], OUTPUT_MAP_3)}
 ]
 
-get_current_ranges_data = [
+get_ampere_ranges_data = [
     {
     INPUT:INPUT_DATA_1, 
     OUTPUT:[[(45, 45), 1], [(78, 80), 3], [(100, 105), 6], [(199, 200), 2]]
@@ -75,7 +77,7 @@ format_range_display_data = [
     
 ]
 
-print_current_ranges_data = [
+print_ampere_ranges_data = [
     {
     INPUT:["47-47, 1", "7-8, 3"], 
     OUTPUT: "47-47, 1\n7-8, 3\n"
@@ -97,4 +99,44 @@ detect_display_readings_data = [
     OUTPUT:"1-1, 1\n4-5, 3\n10-14, 5\n"
     }
     
+]
+
+error_index_data = [
+    {
+    INPUT:{
+            BIT_READINGS: [2091, 4095, 1178, 1982, 4095, 4094, 4094],
+            NO_OF_BITS: 12
+        },
+    OUTPUT:[2091, 1178, 1982, 4094, 4094]
+    }
+]
+
+bits_data = [
+    {
+    INPUT:{
+        BIT_READINGS: 1146,
+        NO_OF_BITS: 12
+    },
+    OUTPUT:3
+    }
+]
+
+conversion_data = [
+    {
+        INPUT: {
+            BIT_READINGS: [0, 1123, 987, 1142, 1134, 1500, 3098, 4000],
+            NO_OF_BITS: 12
+        },
+        OUTPUT: [0, 3, 2, 3, 3, 4, 8, 10]
+    }
+]
+
+conversion_readings_data = [
+    {
+        INPUT: {
+            BIT_READINGS: [0, 1123, 987, 1142, 1134, 1500, 3098, 4000],
+            NO_OF_BITS: 12
+        },
+        OUTPUT: "0-0, 1\n2-4, 5\n8-8, 1\n10-10, 1\n"
+    }
 ]
