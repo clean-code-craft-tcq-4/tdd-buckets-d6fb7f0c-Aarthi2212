@@ -56,24 +56,40 @@ class AmpereRangeTest(unittest.TestCase):
 class BitsToAmpsTest(unittest.TestCase):
   def test_ignore_error_index(self):
     for test in test_data.error_index_data:
-      self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).ignore_error_index(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))
+      self.assertEqual(BitsToAmpsConverter(
+        test.get(test_data.INPUT).get(test_data.NO_OF_BITS),
+        test.get(test_data.INPUT).get(test_data.IS_BI_DIRECTIONAL),
+        test.get(test_data.INPUT).get(test_data.REFERENCE)
+        ).ignore_error_index(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))
 
   def test_bits_to_amps_conversion(self):
     for test in test_data.bits_data:
-      self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).convert_bit_to_amps(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))   
+      self.assertEqual(BitsToAmpsConverter(
+        test.get(test_data.INPUT).get(test_data.NO_OF_BITS),
+        test.get(test_data.INPUT).get(test_data.IS_BI_DIRECTIONAL),
+        test.get(test_data.INPUT).get(test_data.REFERENCE)).convert_bit_to_amps(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))   
 
   def test_convert(self):
     for test in test_data.conversion_data:
-      self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).convert(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))   
+      self.assertEqual(BitsToAmpsConverter(
+        test.get(test_data.INPUT).get(test_data.NO_OF_BITS),
+        test.get(test_data.INPUT).get(test_data.IS_BI_DIRECTIONAL),
+        test.get(test_data.INPUT).get(test_data.REFERENCE)).convert(test.get(test_data.INPUT).get(test_data.BIT_READINGS)), test.get(test_data.OUTPUT))   
   
   def test_absolute_conversion(self):
     for test in test_data.absolute_conversion_data:
-      self.assertEqual(BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).get_absolute_readings(test.get(test_data.INPUT).get(test_data.AMPERE_READINGS)), test.get(test_data.OUTPUT))   
+      self.assertEqual(BitsToAmpsConverter(
+        test.get(test_data.INPUT).get(test_data.NO_OF_BITS),
+        test.get(test_data.INPUT).get(test_data.IS_BI_DIRECTIONAL),
+        test.get(test_data.INPUT).get(test_data.REFERENCE)).get_absolute_readings(test.get(test_data.INPUT).get(test_data.AMPERE_READINGS)), test.get(test_data.OUTPUT))   
   
   def test_convert_display_ampere_ranges(self):
     for test in test_data.conversion_readings_data:
       with patch(STD_OUT, new = StringIO()) as fake_out:
-        BitsToAmpsConverter(test.get(test_data.INPUT).get(test_data.NO_OF_BITS)).convert_display_ampere_ranges(test.get(test_data.INPUT).get(test_data.BIT_READINGS))
+        BitsToAmpsConverter(
+          test.get(test_data.INPUT).get(test_data.NO_OF_BITS),
+          test.get(test_data.INPUT).get(test_data.IS_BI_DIRECTIONAL),
+          test.get(test_data.INPUT).get(test_data.REFERENCE)).convert_display_ampere_ranges(test.get(test_data.INPUT).get(test_data.BIT_READINGS))
         self.assertEqual(fake_out.getvalue(), test.get(test_data.OUTPUT))
 
 if __name__ == '__main__':

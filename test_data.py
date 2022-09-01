@@ -4,6 +4,8 @@ OUTPUT = "OUTPUT"
 BIT_READINGS = "BIT_READINGS"
 NO_OF_BITS = "NO_OF_BITS"
 AMPERE_READINGS = "AMPERE_READINGS"
+IS_BI_DIRECTIONAL = "IS_BI_DIRECTIONAL"
+REFERENCE = "REFERENCE"
 INPUT_DATA_1 = [200, 199, 100, 101, 102, 103, 104, 78, 79, 80, 105, 45]
 INPUT_DATA_2 = [1, 4, 4, 10, 5, 11, 12, 13, 14]
 OUTPUT_MAP_1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
@@ -106,7 +108,9 @@ error_index_data = [
     {
     INPUT:{
             BIT_READINGS: [2091, 4095, 1178, 1982, 4095, 4094, 4094],
-            NO_OF_BITS: 12
+            NO_OF_BITS: 12,
+            IS_BI_DIRECTIONAL : False,
+            REFERENCE: 10
         },
     OUTPUT:[2091, 1178, 1982, 4094, 4094]
     }
@@ -116,7 +120,9 @@ bits_data = [
     {
     INPUT:{
         BIT_READINGS: 1146,
-        NO_OF_BITS: 12
+        NO_OF_BITS: 12,
+        IS_BI_DIRECTIONAL: False,
+        REFERENCE: 10
     },
     OUTPUT:3
     }
@@ -126,7 +132,9 @@ absolute_conversion_data = [
     {
         INPUT: {
             AMPERE_READINGS: [-14, 13, 12, -20, 0, 11, -1, 10],
-            NO_OF_BITS: 10
+            NO_OF_BITS: 10,
+            IS_BI_DIRECTIONAL: True,
+            REFERENCE: 15
         },
         OUTPUT: [14, 13, 12, 20, 0, 11, 1, 10]
     }
@@ -136,7 +144,9 @@ conversion_data = [
     {
         INPUT: {
             BIT_READINGS: [0, 1123, 987, 1142, 1134, 1500, 3098, 4000],
-            NO_OF_BITS: 12
+            NO_OF_BITS: 12,
+            IS_BI_DIRECTIONAL: False,
+            REFERENCE: 10
         },
         OUTPUT: [0, 3, 2, 3, 3, 4, 8, 10]
     }
@@ -146,14 +156,18 @@ conversion_readings_data = [
     {
         INPUT: {
             BIT_READINGS: [0, 1123, 987, 1142, 1134, 1500, 3098, 4000],
-            NO_OF_BITS: 12
+            NO_OF_BITS: 12,
+            IS_BI_DIRECTIONAL: False,
+            REFERENCE: 10
         },
         OUTPUT: "0-0, 1\n2-4, 5\n8-8, 1\n10-10, 1\n"
     },
     {
         INPUT: {
             BIT_READINGS: [100, 103, 150, 200, 500, 400, 800, 1021],
-            NO_OF_BITS: 10
+            NO_OF_BITS: 10,
+            IS_BI_DIRECTIONAL: True,
+            REFERENCE: 15
         },
         OUTPUT: "0-0, 1\n3-3, 1\n8-9, 2\n11-12, 3\n15-15, 1\n"
     }

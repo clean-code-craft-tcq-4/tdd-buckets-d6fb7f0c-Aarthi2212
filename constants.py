@@ -5,7 +5,6 @@ ERROR_INDEXES = {
     "12" : 4095,
     "10" : 1023
 }
-BITS_TO_AMPS_CONVERSION = {
-    "12": "round(10* ({}/ {}))",
-    "10": "round(({} * (30/{}))-15)"
-}
+BITS_TO_AMPS_CONVERSION_UNI = "round({2}* ({0}/ {1}))"
+
+BITS_TO_AMPS_CONVERSION_BI = "round(({0} * (2*{2}/{1}))-{2})"
